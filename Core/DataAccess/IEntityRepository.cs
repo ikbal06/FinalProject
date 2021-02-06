@@ -1,10 +1,10 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-
-namespace DataAccess.Abstract
+//CORE KATMANI DİĞRE KATMANLARI REFERANS ALMAZ
+namespace Core.DataAccess
 {
     //sınıflandırmak istiyorum T yi
     //generic constraint

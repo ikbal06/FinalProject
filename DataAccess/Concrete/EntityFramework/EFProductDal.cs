@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
         public void Add(Product entity)
         {
             //using işi bitince direkt collect garbage ye gönderiyor ve sildiriyor
-            using (NortwindContext context=new NortwindContext())
+            using (NorthwindContext context=new NorthwindContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public void Delete(Product entity)
         {
-            using (NortwindContext context = new NortwindContext())
+            using (NorthwindContext context = new NorthwindContext())
             {
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
@@ -35,7 +35,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public Product Get(Expression<Func<Product, bool>> filter)
         {
-            using (NortwindContext context=new NortwindContext())
+            using (NorthwindContext context=new NorthwindContext())
             {
                 return context.Set<Product>().SingleOrDefault(filter);
             }
@@ -43,7 +43,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            using (NortwindContext context=new NortwindContext())
+            using (NorthwindContext context=new NorthwindContext())
             {
                 return filter == null 
                     ? context.Set<Product>().ToList()
@@ -53,7 +53,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public void Update(Product entity)
         {
-            using (NortwindContext context = new NortwindContext())
+            using (NorthwindContext context = new NorthwindContext())
             {
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
