@@ -7,14 +7,14 @@ namespace Core.Utililies.Results
     public class Result : IResult
     {
       //iki parametreli conc çalışacak ya iki kere yazmasın üsteki ve alttaki bir çalışsın diye
-        public Result(bool succes, string message):this(succes)
+        public Result(bool success, string message):this(success)
         {
             Message = message;
         }
         //mesaj yollamak istemiyorsam
-        public Result(bool succes)
+        public Result(bool success)
         {
-            Success = succes;
+            Success = success;
         }
 
         public bool Success { get; }
