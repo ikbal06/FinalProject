@@ -15,6 +15,6 @@ namespace Business.Abstract
         IDataResult<List<ProductDetailDto>> GetProductDetails();
         IDataResult<Product> GetById(int productId);
         IResult Add(Product product); //void var yani data yok ondan IDataResult yapmadık
-      
+        IResult Update(Product product);
     }
 }

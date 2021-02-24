@@ -9,11 +9,12 @@ using System.Text;
 
 namespace Core.Aspects.Autofac.Validation
 {
-    public class Class1 : MethodInterception
+    public class ValidationAspect : MethodInterception //Aspect(nerede çalışmasını istiyorsam onu belirliyorum başı mı ortası mı sonu mu)
     {
         private Type _validatorType;
-        public Class1(Type validatorType)
+        public ValidationAspect(Type validatorType)
         {
+            //defensive coding
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {
                 throw new System.Exception("Bu bir doğrulama sınıfı değil");
@@ -21,6 +22,7 @@ namespace Core.Aspects.Autofac.Validation
 
             _validatorType = validatorType;
         }
+        //doğrulamayı başında yaptığımızdan  onbefore u kullandık
         protected override void OnBefore(IInvocation invocation)
         {
             var validator = (IValidator)Activator.CreateInstance(_validatorType);
