@@ -1,5 +1,7 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.DependencyResolvers;
+using Core.Extensions;
 using Core.Utililies.IoC;
 using Core.Utililies.Security.Encryption;
 using Core.Utililies.Security.JWT;
@@ -41,12 +43,12 @@ namespace WebAPI
             //services.AddSingleton<IProductService,ProductManager>();  //new leme çeþidi burada böyle yapýlýyor
             //services.AddSingleton<IProductDal,EFProductDal>();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
+            
+           services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer
+                (options=>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -59,7 +61,10 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            ServiceTool.Create(services);
+
+            services.AddDependencyResolvers(new ICoreModule[] {
+                new CoreModule()
+            });
 
         }
 

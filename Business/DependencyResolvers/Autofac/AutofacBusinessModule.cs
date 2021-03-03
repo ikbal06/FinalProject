@@ -24,13 +24,14 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
             builder.RegisterType<EFCategoryDal>().As<ICategoryDal>().SingleInstance();
+
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
-            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
+        
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

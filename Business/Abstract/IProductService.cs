@@ -16,5 +16,6 @@ namespace Business.Abstract
         IDataResult<Product> GetById(int productId);
         IResult Add(Product product); //void var yani data yok ondan IDataResult yapmadık
         IResult Update(Product product);
+        IResult AddTransactionalTest(Product product);  //tutarlılığı korur iki veri tabanı işlemi var
     }
 }
