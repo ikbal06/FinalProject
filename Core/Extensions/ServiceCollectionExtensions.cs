@@ -16,10 +16,6 @@ namespace Core.Extensions
                 module.Load(serviceCollection);
             }
             return ServiceTool.Create(serviceCollection);
-
-        }
-            
-        
-	
+        }                  	
     }
 }
