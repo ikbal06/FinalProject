@@ -57,7 +57,7 @@ namespace Business.Concrete
             //iş kodları varsa new yapma veri erişimini değiştiriyorsun
             //yetkisi var mı?
 
-            if (DateTime.Now.Hour == 1) //sistem saatini verir. Yani ben 23 e kadar bu sistemi kapatmak istiyorum
+            if (DateTime.Now.Hour == 5) //sistem saatini verir. Yani ben 23 e kadar bu sistemi kapatmak istiyorum
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }

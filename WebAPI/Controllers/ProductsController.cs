@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")] 
+    [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
 
             Thread.Sleep(1000);
 
-            var result =_productService.GetAll();
+            var result = _productService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -52,17 +52,29 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
- 
-         [HttpPost("add")]
+
+        [HttpPost("add")]
         public IActionResult Add(Product product)
-         {
-             var result = _productService.Add(product);
+        {
+            var result = _productService.Add(product);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
-         }
+        }
+
+        [HttpGet("getbycategory")]
+        public IActionResult GetByCategory(int categoryId)
+        {
+            var result = _productService.GetAllByCategoryId(categoryId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
     }
-   
 }
